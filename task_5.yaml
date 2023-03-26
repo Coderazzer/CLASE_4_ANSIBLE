@@ -1,22 +1,22 @@
 ---
-- name: show memory-disk info
+- name: show memory and disk info
   hosts: my_host
   remote_user: root
   become: true
   become_method: sudo
   tasks:
-    - name: execute "free" command
+    - name: execute free command
       command: free -m
       register: free_output
 
-    - name: print "free" ouput
+    - name: print free ouput
       debug:
         var: free_output.stdout_lines
 
-    - name: execute "df" command
+    - name: execute df command
       command: df -h
       register: df_output
 
-    - name: print "df" ouput
+    - name: print df ouput
       debug:
         var: df_output.stdout_lines
